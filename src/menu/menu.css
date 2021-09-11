@@ -1,0 +1,113 @@
+.menu{
+    position: relative;
+    right: 0px;
+    top: 57.4px;
+    margin: 0 auto;
+    margin-left: 220px;
+    margin-right: 20px;
+}
+.menuContainer{
+display: grid;
+grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+grid-gap: 10px;
+
+}
+.foodBox{
+    border-radius: 10px;
+    margin: 20px 0px;
+    padding: 10px;
+    box-shadow: 0px 0px 15px -10px rgb(0 0 0 / 75%);
+    display: flex;
+    flex-direction: column;
+}
+.sortBtn{
+    cursor: pointer;
+    padding: .5em 1em;
+    background: #cceef3;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+.menuHeaderBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0px;
+    margin-bottom: 0px;
+    padding: 10px;
+    box-shadow: 0px 0px 15px -10px rgb(0 0 0 / 75%);
+}
+.imgBox{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+height: 65%;
+overflow: hidden;
+}
+.imgBox img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.text{
+    font-size: 1.3em;
+    width: 60%;
+    color: brown;
+    font-family: cursive;
+    text-align: center;
+}
+.price{
+    width: 30%;
+    text-align: center;
+    font-size: 1.5em;
+    color: #ea6060;
+    font-family: cursive;
+}
+.nameBox{
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 14%;
+margin: 20px 0px;
+}
+.menuHeart{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 3rem !important;
+    top: 130% !important;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.8s ease-in-out !important;
+    fill: red !important;
+}
+.imgBoxBtn{
+    position: absolute;
+    padding: 2px 8px;
+    font-size: 1.2em;
+    z-index: 1;
+    letter-spacing: 1px;
+    left: 50%;
+    background:#efefef;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    top: 136%;
+    transition: all 0.4s ease-in-out;
+}
+.imgBox:hover .imgBoxBtn{
+    top: 83%;
+}
+.imgBox:hover .menuHeart{
+top: 50% !important;
+}
+.imgBox:hover::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    background: crimson;
+    opacity: 0.2;
+}
