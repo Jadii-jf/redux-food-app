@@ -1,8 +1,8 @@
 .header{
-    background: #f9b3ca82;    
+    background:#f5ba35d9;;   
     padding: .4em 0px;
     position: fixed;
-    top: 0;
+    top: 30px;
     width: 100%;
     z-index: 1;
 }

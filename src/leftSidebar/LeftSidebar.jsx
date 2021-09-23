@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useDispatch} from 'react'
+import React,{useState,useEffect,useDispatch,useRef} from 'react'
 import './leftSidebar.css'
 import { fetchCategory,fetchArea } from '../dummyData';
 import {store} from '../redux/sotre';
@@ -22,11 +22,11 @@ const Api ={
 
     
 export const LeftSidebar = () => {
+    const ref= useRef(null);
     let id=0;
     const [state, setState] = useState(()=>{return null});
 
     useEffect(async()=>{
-        console.log('junaid');
   const resp = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
         const data = await resp.json();
 setState(data.categories)
@@ -34,7 +34,7 @@ setState(data.categories)
 
 
     return (
-        <div className='leftSidebar'>
+        <div className='leftSidebar' ref={ref}>
             <h1>FILTER</h1>
             <div className="filterBox">
                 <button onClick={(e)=>{

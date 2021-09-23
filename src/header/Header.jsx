@@ -6,13 +6,24 @@ import {Face, FavoriteBorder, LocalDining,Search, ShoppingCart} from '@material-
 export const Header = () => {
     const refCart = useRef(null)
     const refHeart =useRef(null)
+    const refHead = useRef(null);
     store.subscribe(()=>{
         refHeart.current.innerHTML = store.getState().like.length;
         refCart.current.innerHTML=store.getState().cart.length;
     })
 
+window.addEventListener('scroll',(e)=>{
+    if(window.scrollY>=30)
+    {
+refHead.current.style.top='0';
+    }
+    else{
+        refHead.current.style.top='30px'
+    }
+})    
+
     return (
-        <div className="header">
+        <div className="header" ref={refHead}>
             <div className="headerWrapper">
                 <Link to="/">
             <h1 className="headerLogo">
@@ -20,13 +31,13 @@ export const Header = () => {
             <span>G</span>ree()!()      
             </h1> 
             </Link> 
-            <div className="searchBox">
-                <input type="text" placeholder="search"/>
-                <Search className='searchLogo'/>
-            </div>
             <div className="logBox">
                 <h3>Junaid Hussain</h3>
-                <button><div></div>Login</button>
+                <div className="searchBox">
+                <input type="text" placeholder="...@gmail.com"/>
+            </div>
+            <button><div></div>Login</button>
+
                 <button><div></div>Logout</button>
             </div>
             <div className="cartBoxIcon">

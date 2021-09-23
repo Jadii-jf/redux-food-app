@@ -3,9 +3,20 @@
     top: 80px;
 }
 .heartFoodBox{
-max-width: 297px;
-height: 317px;
+    max-width: 300px;
+    margin: 20px;
+    padding: 10px;
 }
 .heartImgBox{
-
+margin-bottom: 20px;
+}
+.fa-heartbeat{
+    font-size: 5rem;
+    text-align: center;
+    padding: 10px 0px;
+    color: #f7da11;
+    cursor: pointer;
+    display: inline-block;
+    width: 33%;
+    margin: 0 auto;
 }

@@ -10,15 +10,18 @@ import {
   } from "react-router-dom";
 import { LeftSidebar } from './leftSidebar/LeftSidebar'
 import  Menue from './menu/Menue'
+import {Announcemnt} from './components/Announcemnt'
 import { Heart } from './components/heart/Heart';
+import { Recipe } from './components/recipe/Recipe';
 export const App = () => {
     return (
         <div className="app">
         <Router>
+          <Announcemnt/>
         <Header/>
         <Switch>
         <Route exact path='/'>
-          <LeftSidebar/>
+        <LeftSidebar/>
         <Menue/>       
         </Route>
         <Route path="/cart">
@@ -26,6 +29,9 @@ export const App = () => {
         </Route>
          <Route path='/heart'>
            <Heart/>
+         </Route>
+         <Route path='/recipe'>
+           <Recipe/>
          </Route>
         </Switch>
         </Router>

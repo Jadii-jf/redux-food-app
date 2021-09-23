@@ -7,7 +7,8 @@ import { FoodItem } from '../components/FoodItem/FoodItem'
 import { actCategory,cart } from '../redux/action/action'
 import { sortFunction } from './sortFunction'
 import Quantity from '../components/quantity/Quantity'
-import { FavoriteBorder } from '@material-ui/icons'
+import { FavoriteBorder, StarRate } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 const Button = styled.button`
 background: transparent;
     border-radius: 3px;
@@ -29,12 +30,14 @@ ${props =>
     `};
 `
  const Menue = (props) => {
-
+const[count , setCount] =useState([0,1,2,3,4,5,]);
      let id=0;
      const arrayCheck = [];
      let i=0;
 
-
+const ratingFunc=(index)=>{
+console.log(index);
+}
      useEffect(async()=>{
          const resp = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
          const data = await resp.json();
@@ -67,6 +70,9 @@ else{
 }
    })
  
+   const handleClick = (item)=>{
+store.dispatch({type:'RECIPE',payload:item})
+   }
     return (
         <div  className="menu">
             <div className="menuHeaderBox">
@@ -83,7 +89,7 @@ else{
               <div key={item.id} className="foodBox">
                   <div className="imgBox">
                  <FavoriteBorder className="menuHeart" onClick={()=>props.like(item)}/>   
-                 <button className="imgBoxBtn">Recipe</button>   
+                <Link to='/recipe'> <button className="imgBoxBtn" onClick={()=>handleClick(item)}>Recipe</button>   </Link>
            <img src={item.strMealThumb} alt={item.strMeal} style={{cursor:"pointer"}}/>             
                   </div>
 
@@ -91,6 +97,15 @@ else{
           <p className='price'>{item.price}$</p>
           <p className='text'>{item.strMeal}</p>
                   </div>
+                  <div className="rating">
+                {
+                    count.map((item,index)=>{
+                        return <StarRate style={{cursor:'pointer'}} onClick={(e)=>{
+                            ratingFunc(index);
+                        }}/>
+                    })
+                }
+                    </div>
        
  {  
 item.button ?<Button primary 
@@ -116,6 +131,10 @@ onClick={
         </div>
     )
 }
+
+
+
+
 const mapStateToProps = state=>{
     return {
         value:state,

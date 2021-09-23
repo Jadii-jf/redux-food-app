@@ -11,8 +11,9 @@ const initialState={
     signal:true,
     totalPrice:0,
     like:[],
-    cart:[]
-}
+    cart:[],
+    recipe:{strMeal:"Arrabiata"}
+  }
 export const Reducer = (state=initialState,{type,payload})=>{
    let flage=false;
    let likeFlage=false;
@@ -33,7 +34,6 @@ export const Reducer = (state=initialState,{type,payload})=>{
                  if(payload.removeItem==='remove')
                 {            
                      const filterItem=state.cart.filter((item)=>item.strMeal!==payload.strMeal);
-                console.log(filterItem);
                 state.totalPrice-=payload.price;
                 return {...state,cart:filterItem};  
                 }
@@ -87,11 +87,17 @@ export const Reducer = (state=initialState,{type,payload})=>{
         }          
         case "LIKE":
           likeFlage = checkValue(state.like,payload);
-          console.log(likeFlage);
           if(!likeFlage)
           {
           return {...state,like:[...state.like,payload]}            
           }
+          else{
+            return {...state};
+          }
+          case "FILTER_LIKE":
+            return {...state,like:payload};
+          case "RECIPE":
+            return{...state,recipe:payload};
         default :
         return state;
 }
