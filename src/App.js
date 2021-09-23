@@ -11,7 +11,7 @@ import {
 import { LeftSidebar } from './leftSidebar/LeftSidebar'
 import  Menue from './menu/Menue'
 import {Announcemnt} from './components/Announcemnt'
-import { Heart } from './components/heart/Heart';
+import  {Heart} from './components/heart/Heart';
 import { Recipe } from './components/recipe/Recipe';
 export const App = () => {
     return (

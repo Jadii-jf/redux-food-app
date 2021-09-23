@@ -38,9 +38,15 @@ const[count , setCount] =useState([0,1,2,3,4,5,]);
 const ratingFunc=(index)=>{
 console.log(index);
 }
-     useEffect(async()=>{
-         const resp = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
-         const data = await resp.json();
+if(store.getState().foodArray.length===0)
+{
+
+
+     (async()=>{
+            console.log(store.getState().foodArray)
+          const resp = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')           
+             const data = await resp.json();
+         console.log(store.getState().foodChange)
          data.meals.unshift({food:"Seafood"});
          data.meals.map(item=>{
                 store.getState().cart.map(num=>{
@@ -58,7 +64,8 @@ console.log(index);
             item.price=Math.floor(Math.random() * 30) + 1;
         })
          store.dispatch(actCategory(data.meals));
-    },[])
+    })();
+}
   const {foodArray:array,foodName}  = useSelector((item)=>{
  
   if(item.flage)  

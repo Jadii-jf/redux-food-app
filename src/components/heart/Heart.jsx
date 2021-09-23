@@ -55,7 +55,10 @@ transition:all 0.5s ease;
 
 export const Heart = () => {
 
+  const [state, setState] = useState([])
+       let flage =true;
     let array = useSelector((item)=>{
+        flage=false;
    return item.like
     })
    
